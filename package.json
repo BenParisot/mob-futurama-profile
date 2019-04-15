@@ -1,7 +1,6 @@
 {
   "name": "mob-futurama-profile",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "directories": {
     "lib": "lib"
@@ -22,6 +21,14 @@
   "homepage": "https://github.com/alchemy-fullstack-js-spring-2019/mob-futurama-profile#readme",
   "dependencies": {
     "mkdirp": "^0.5.1",
+    "superagent": "^5.0.2",
     "uuid": "^3.3.2"
+  },
+  "description": "",
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "jest": "^24.7.1",
+    "nodemon": "^1.18.11",
+    "supertest": "^4.0.2"
   }
 }
