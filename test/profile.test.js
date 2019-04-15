@@ -49,4 +49,31 @@ describe('profile routes', () => {
         expect(res.body).toEqual({ name: 'Charrol', favChar: 'Leela', quote: 'Nibblerz', _id: expect.any(String) });
       });
   });
+
+  it('updates profile name', () => {
+    return Profile.create({ 
+      name: 'Charrol', 
+      favChar: 'Leela', 
+      quote: 'Nibblerz' 
+    })
+      .then(createdProfile => {
+        return request(app)
+          .patch(`/profiles/${createdProfile._id}`)
+          .send({
+            favChar: 'bender'
+          });
+      })
+      .then(results => {
+        expect(results.body).toEqual({
+          name: 'Charrol',
+          favChar: 'bender',
+          quote: expect.any(String),
+          _id: expect.any(String)
+        });
+      });
+  });
+
+
+
+
 });
