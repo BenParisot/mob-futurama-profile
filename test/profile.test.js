@@ -39,4 +39,14 @@ describe('profile routes', () => {
           });
       });
   });
+  it('finds by id', () => {
+    return Profile.create({ name: 'Charrol', favChar: 'Leela', quote: 'Nibblerz' })
+      .then(createdProfile => {
+        return request(app)
+          .get(`/profiles/${createdProfile._id}`);
+      })
+      .then(res => {
+        expect(res.body).toEqual({ name: 'Charrol', favChar: 'Leela', quote: 'Nibblerz', _id: expect.any(String) });
+      });
+  });
 });
