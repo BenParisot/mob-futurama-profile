@@ -1,7 +1,11 @@
 const request = require('supertest');
 const app = require('../lib/app');
+const Profile = require('../lib/models/Profile');
 
 describe('profile routes', () => {
+  afterEach(() => {
+    return Profile.drop();
+  });
   it('creates profile', () => {
     return request(app)
       .post('/profiles')
@@ -17,6 +21,22 @@ describe('profile routes', () => {
           quote: 'drink booze',
           _id: expect.any(String)
         });
+      });
+  });
+
+  it('returns all profiles', () => {
+    return Profile
+      .create({
+        name: 'cherrol',
+        favChar: 'fry',
+        quote: 'shut up and take my money!'
+      })
+      .then(() => {
+        return request(app)
+          .get('/profiles')
+          .then(response => {
+            expect(response.body).toHaveLength(1);
+          });
       });
   });
 });
