@@ -72,6 +72,20 @@ describe('profile routes', () => {
         });
       });
   });
+  it('deletes a profile', () => {
+    return Profile.create({ 
+      name: 'Charrol', 
+      favChar: 'Leela', 
+      quote: 'Nibblerz' 
+    })
+      .then(createdProfile => {
+        return request(app)
+          .delete(`/profiles/${createdProfile._id}`);
+      })
+      .then(result => {
+        expect(result.body).toEqual({ deleted: 1 });
+      });
+  });
 
 
 
