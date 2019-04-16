@@ -1,5 +1,7 @@
 const app = require('./lib/app');
 
-app.listen(8888, () => {
+const PORT = process.env.PORT || 8888;
+
+app.listen(PORT, () => {
   console.log('server connected');
 });
