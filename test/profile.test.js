@@ -12,13 +12,12 @@ describe('profile routes', () => {
       .send({ 
         name: 'sharol', 
         favChar: 'bender', 
-        quote: 'drink booze' 
       })
       .then(res => {
         expect(res.body).toEqual({ 
           name: 'sharol', 
           favChar: 'bender', 
-          quote: 'drink booze',
+          quote: expect.any(String),
           _id: expect.any(String)
         });
       });
