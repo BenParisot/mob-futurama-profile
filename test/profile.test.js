@@ -59,7 +59,9 @@ describe('profile routes', () => {
         return request(app)
           .patch(`/profiles/${createdProfile._id}`)
           .send({
-            favChar: 'bender'
+            name: 'Charrol',
+            favChar: 'bender',
+            quote: 'Nibblerz'
           });
       })
       .then(results => {
@@ -85,8 +87,4 @@ describe('profile routes', () => {
         expect(result.body).toEqual({ deleted: 1 });
       });
   });
-
-
-
-
 });
